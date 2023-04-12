@@ -9,7 +9,7 @@ export const config: IConfig = {
   chatPrivateTriggerKeyword: process.env.CHAT_PRIVATE_TRIGGER_KEYWORD || "@ChatGPT",
   chatEndTitle:process.env.CHAT_PRIVATE_TRIGGER_KEYWORD || "/nahello",
   chatTriggerRule: process.env.CHAT_TRIGGER_RULE || "@ChatGPT",
-  disableGroupMessage: process.env.DISABLE_GROUP_MESSAGE === "false",
+  disableGroupMessage: process.env.DISABLE_GROUP_MESSAGE === "",
   temperature: process.env.TEMPERATURE ? parseFloat(process.env.TEMPERATURE) : 0.6,
   blockWords: process.env.BLOCK_WORDS?.split(",") || [],
   chatgptBlockWords: process.env.CHATGPT_BLOCK_WORDS?.split(",") || [],
