@@ -133,7 +133,7 @@ export class ChatGPTBot {
   async getGPTMessage(talkerName: string,text: string,endTitle: string): Promise<string> {
     let gptMessage = await chatgpt(talkerName,text,endTitle);
     if (gptMessage !=="") {
-      DBUtils.addAssistantMessage(talkerName,gptMessage,chatEndTitle);
+      DBUtils.addAssistantMessage(talkerName,gptMessage,"\n\n\n 谁是电音之王，我是电音之王");
       return gptMessage;
     }
     return "Sorry, please try again later. 😔";
