@@ -33,6 +33,7 @@ interface ICommand{
 }
 export class ChatGPTBot {
   chatPrivateTriggerKeyword = config.chatPrivateTriggerKeyword;
+  chatEndTitle = config.chatEndTitle;
   chatTriggerRule = config.chatTriggerRule? new RegExp(config.chatTriggerRule): undefined;
   disableGroupMessage = config.disableGroupMessage || false;
   botName: string = "";
@@ -129,10 +130,10 @@ export class ChatGPTBot {
     // remove more text via - - - - - - - - - - - - - - -
     return text
   }
-  async getGPTMessage(talkerName: string,text: string): Promise<string> {
-    let gptMessage = await chatgpt(talkerName,text);
+  async getGPTMessage(talkerName: string,text: string,endTitle: string): Promise<string> {
+    let gptMessage = await chatgpt(talkerName,text,endTitle);
     if (gptMessage !=="") {
-      DBUtils.addAssistantMessage(talkerName,gptMessage);
+      DBUtils.addAssistantMessage(talkerName,gptMessage,chatEndTitle);
       return gptMessage;
     }
     return "Sorry, please try again later. 😔";
